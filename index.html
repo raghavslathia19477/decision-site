@@ -5,64 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bas sach bolna</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #121212);
-      color: #fff;
-      overflow: hidden;
-    }
+ <style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI", sans-serif;
+    color: #fff;
+    overflow: hidden;
 
-    .container {
-      padding: 20px;
-      max-width: 90%;
-    }
+    /* 🔥 Premium romantic gradient */
+    background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
+  }
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
+  .container {
+    text-align: center;
+    padding: 30px 20px;
+    max-width: 90%;
 
-    p {
-      font-size: 15px;
-      color: #cfcfcf;
-      margin-bottom: 30px;
-    }
+    /* glass effect */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
 
-    button {
-      display: block;
-      width: 220px;
-      margin: 12px auto;
-      padding: 12px;
-      font-size: 15px;
-      border-radius: 10px;
-      border: 1px solid #666;
-      background: rgba(255,255,255,0.05);
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+    /* subtle glow */
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+  }
 
-    button:hover {
-      border-color: #fff;
-      transform: scale(1.05);
-    }
+  h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
 
-    #message {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #e0e0e0;
-      line-height: 1.5;
-    }
-  </style>
+  p {
+    font-size: 15px;
+    color: #d1d1d1;
+    margin-bottom: 30px;
+  }
+
+  button {
+    display: block;
+    width: 220px;
+    margin: 12px auto;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    transform: scale(1.07);
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  }
+
+  #message {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #e8e8e8;
+    line-height: 1.6;
+  }
+</style>
 </head>
 
 <body>
