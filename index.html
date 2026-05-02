@@ -5,75 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bas sach bolna</title>
 
- <style>
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Segoe UI", sans-serif;
-    color: #fff;
-    overflow: hidden;
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Segoe UI", sans-serif;
+      color: #fff;
+      overflow: hidden;
 
-    /* 🔥 Premium romantic gradient */
-    background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
-  }
+      /* 🔥 Premium romantic gradient */
+      background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
+    }
 
-  .container {
-    text-align: center;
-    padding: 30px 20px;
-    max-width: 90%;
+    .container {
+      text-align: center;
+      padding: 30px 20px;
+      max-width: 90%;
 
-    /* glass effect */
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+      /* glass effect */
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
 
-    /* subtle glow */
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
-  }
+      /* subtle glow */
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
+    }
 
-  h1 {
-    font-size: 26px;
-    margin-bottom: 10px;
-    font-weight: 500;
-  }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
 
-  p {
-    font-size: 15px;
-    color: #d1d1d1;
-    margin-bottom: 30px;
-  }
+    p {
+      font-size: 15px;
+      color: #d1d1d1;
+      margin-bottom: 30px;
+    }
 
-  button {
-    display: block;
-    width: 220px;
-    margin: 12px auto;
-    padding: 12px;
-    font-size: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.05);
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+    button {
+      display: block;
+      width: 230px;
+      margin: 12px auto;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-  button:hover {
-    transform: scale(1.07);
-    border-color: #fff;
-    box-shadow: 0 0 15px rgba(255,255,255,0.3);
-  }
+    button:hover {
+      transform: scale(1.07);
+      border-color: #fff;
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
 
-  #message {
-    margin-top: 30px;
-    font-size: 16px;
-    color: #e8e8e8;
-    line-height: 1.6;
-  }
-</style>
+    #message {
+      margin-top: 25px;
+      font-size: 15px;
+      color: #e8e8e8;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 
 <body>
@@ -82,23 +82,32 @@
     <h1>Chalo ek baar settle karte hain 🙂</h1>
     <p>sach bolna… juth ni</p>
 
-    <button onclick="myFault()">Raghav ki galti thi 😔</button>
-<button id="yourBtn" ontouchstart="moveButton()" onmouseover="moveButton()">Anshika ki galti thi 😏</button>
+    <!-- ESCAPING BUTTON -->
+    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
+      Raghav ki galti thi 😔
+    </button>
+
+    <!-- NORMAL BUTTON -->
+    <button onclick="herFault()">
+      Anshika ki galti thi 😏
+    </button>
+
     <div id="message"></div>
   </div>
 
   <script>
-   function myFault() {
-  document.getElementById("message").innerHTML =
-    "Theek hai… maan li 😌<br><br>" +
-    "Sach bolu… Raghav kaafi dino se thoda bhara hua tha.<br>" +
-    "Bas feel ho raha tha ki Anshika pehle jaisi baat nahi kar rahi…<br><br>" +
-    "Isliye uss din sab nikal gaya.<br><br>" +
-    "Intent galat nahi tha… bas tareeka galat tha.";
-}
+    function herFault() {
+      document.getElementById("message").innerHTML =
+        "Haan haan… Anshika ki galti thi 😏<br><br>" +
+        "Par sach bolu… Raghav kaafi dino se thoda bhara hua tha.<br>" +
+        "Bas feel ho raha tha ki Anshika pehle jaisi baat nahi kar rahi…<br><br>" +
+        "Isliye uss din sab nikal gaya.<br><br>" +
+        "Intent galat nahi tha… bas tareeka galat tha.<br><br>" +
+        "Ab decide tu kar… baat karni hai ya attitude rakhna hai 🙂";
+    }
 
     function moveButton() {
-      const btn = document.getElementById("yourBtn");
+      const btn = document.getElementById("raghavBtn");
 
       const maxX = window.innerWidth - btn.offsetWidth - 20;
       const maxY = window.innerHeight - btn.offsetHeight - 20;
