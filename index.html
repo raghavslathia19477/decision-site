@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Final Decision</title>
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #eaeaea;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      margin: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background: transparent;
+      border: 1px solid #555;
+      color: #eaeaea;
+      cursor: pointer;
+    }
+    button:hover {
+      border-color: white;
+    }
+    #message {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #bdbdbd;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Let’s settle this once.</h2>
+  <p>Be honest.</p>
+
+  <button onclick="myFault()">Meri galti thi</button>
+  <button id="yourBtn" onmouseover="moveButton()">Nahi, teri galti thi</button>
+
+  <div id="message"></div>
+
+  <script>
+    function myFault() {
+      document.getElementById("message").innerHTML =
+        "Fair. I’ll take that.<br><br>But still… you matter more than being right.";
+    }
+
+    function moveButton() {
+      const btn = document.getElementById("yourBtn");
+      const x = Math.random() * window.innerWidth * 0.7;
+      const y = Math.random() * window.innerHeight * 0.7;
+      btn.style.position = "absolute";
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    }
+  </script>
+
+</body>
+</html>
