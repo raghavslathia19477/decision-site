@@ -18,40 +18,35 @@
     }
 
     .container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+      position: relative;
+      width: 90%;
+      max-width: 400px;
+      height: 75vh; /* 🔥 taller container */
 
-  gap: 20px;
-  padding: 30px 20px;
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(255,255,255,0.08);
 
-  width: 90%;
-  max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* 🔥 THIS IS THE KEY PART */
-  height: 70vh;        /* bigger vertical space */
-  max-height: 90vh;   /* never overflow phone screen */
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
-}
     h1 {
-      font-size: 24px;
-      margin: 0;
+      font-size: 22px;
+      margin-top: 10px;
     }
 
     p {
-      font-size: 15px;
-      color: #d1d1d1;
-      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 20px;
     }
 
     button {
-      width: 230px;
+      width: 220px;
       padding: 12px;
       font-size: 15px;
       border-radius: 12px;
@@ -59,95 +54,86 @@
       background: rgba(255,255,255,0.05);
       color: #fff;
       cursor: pointer;
-      transition: all 0.25s ease;
-      position: relative;
+      transition: 0.25s;
+      position: absolute;
     }
 
     button:hover {
       transform: scale(1.05);
       border-color: #fff;
-      box-shadow: 0 0 12px rgba(255,255,255,0.25);
+    }
+
+    /* 🔥 FIXED POSITIONS */
+    #raghavBtn {
+      top: 35%;   /* middle area (moving zone) */
+    }
+
+    #anshikaBtn {
+      bottom: 20px; /* always bottom → far away */
     }
 
     #message {
-      margin-top: 10px;
-      font-size: 15px;
+      position: absolute;
+      bottom: 80px;
+      text-align: center;
+      font-size: 14px;
       color: #e8e8e8;
       line-height: 1.6;
-      text-align: center;
     }
+
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h1>Chalo ek baar settle karte hain 🙂</h1>
-    <p>sach bolna… juth ni</p>
+<div class="container">
 
-    <!-- ESCAPING BUTTON -->
-    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
-      Raghav ki galti thi 😔
-    </button>
+  <h1>Chalo ek baar settle karte hain 🙂</h1>
+  <p>sach bolna… juth ni</p>
 
-    <!-- SAFE BUTTON -->
-    <button id="anshikaBtn" onclick="herFault()">
-      Anshika ki galti thi 😏
-    </button>
+  <!-- MOVING BUTTON -->
+  <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
+    Raghav ki galti thi 😔
+  </button>
 
-    <div id="message"></div>
-  </div>
+  <!-- FIXED BUTTON -->
+  <button id="anshikaBtn" onclick="herFault()">
+    Anshika ki galti thi 😏
+  </button>
 
-  <script>
-    function herFault() {
-      document.getElementById("message").innerHTML =
-        "Haan haan… Anshika ki galti thi 😏<br><br>" +
-        "Par sach bolu… Raghav kaafi dino se thoda bhara hua tha.<br>" +
-        "Bas feel ho raha tha ki Anshika pehle jaisi baat nahi kar rahi…<br><br>" +
-        "Isliye uss din sab nikal gaya.<br><br>" +
-        "Intent galat nahi tha… bas tareeka galat tha.<br><br>" +
-        "Ab decide tu kar… baat karni hai ya attitude rakhna hai 🙂";
-    }
+  <div id="message"></div>
 
-    function moveButton() {
-      const btn = document.getElementById("raghavBtn");
-      const safeBtn = document.getElementById("anshikaBtn");
-      const container = document.querySelector(".container");
+</div>
 
-      const containerRect = container.getBoundingClientRect();
-      const safeRect = safeBtn.getBoundingClientRect();
+<script>
+function herFault() {
+  document.getElementById("message").innerHTML =
+    "Haan haan… Anshika ki galti thi 😏<br><br>" +
+    "Par sach bolu… Raghav kaafi dino se thoda bhara hua tha.<br>" +
+    "Bas feel ho raha tha ki Anshika pehle jaisi baat nahi kar rahi…<br><br>" +
+    "Isliye uss din sab nikal gaya.<br><br>" +
+    "Intent galat nahi tha… bas tareeka galat tha.<br><br>" +
+    "Ab decide tu kar… baat karni hai ya attitude rakhna hai 🙂";
+}
 
-      const btnWidth = btn.offsetWidth;
-      const btnHeight = btn.offsetHeight;
+function moveButton() {
+  const btn = document.getElementById("raghavBtn");
+  const container = document.querySelector(".container");
 
-      const MIN_DISTANCE = 140; // 🔥 ensures visible gap
+  const rect = container.getBoundingClientRect();
 
-      let x, y, valid = false;
-      let attempts = 0;
+  const maxX = rect.width - btn.offsetWidth - 10;
 
-      while (!valid && attempts < 100) {
-        const maxX = containerRect.width - btnWidth - 10;
-        const maxY = containerRect.height - btnHeight - 20;
+  /* 🔥 ONLY MOVE IN UPPER AREA (keeps distance) */
+  const maxY = rect.height * 0.5;
 
-        x = Math.random() * maxX;
-        y = Math.random() * maxY;
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
 
-        const newLeft = containerRect.left + x;
-        const newTop = containerRect.top + y;
-
-        const distanceX = Math.abs(newLeft - safeRect.left);
-        const distanceY = Math.abs(newTop - safeRect.top);
-
-        valid = (distanceX > MIN_DISTANCE || distanceY > MIN_DISTANCE);
-
-        attempts++;
-      }
-
-      btn.style.position = "absolute";
-      btn.style.left = x + "px";
-      btn.style.top = y + "px";
-    }
-  </script>
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+}
+</script>
 
 </body>
 </html>
