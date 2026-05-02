@@ -79,12 +79,12 @@
     <p>sach bolna… juth ni</p>
 
     <!-- ESCAPING BUTTON -->
-    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()" style="z-index:2;">
+    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
       Raghav ki galti thi 😔
     </button>
 
-    <!-- NORMAL BUTTON -->
-    <button id="anshikaBtn" onclick="herFault()" style="z-index:1;">
+    <!-- SAFE BUTTON -->
+    <button id="anshikaBtn" onclick="herFault()">
       Anshika ki galti thi 😏
     </button>
 
@@ -113,10 +113,12 @@
       const btnWidth = btn.offsetWidth;
       const btnHeight = btn.offsetHeight;
 
-      let x, y, overlapping = true;
+      const MIN_DISTANCE = 120; // 🔥 gap between buttons
+
+      let x, y, valid = false;
       let attempts = 0;
 
-      while (overlapping && attempts < 50) {
+      while (!valid && attempts < 100) {
         const maxX = containerRect.width - btnWidth - 10;
         const maxY = containerRect.height - btnHeight - 10;
 
@@ -126,12 +128,10 @@
         const newLeft = containerRect.left + x;
         const newTop = containerRect.top + y;
 
-        overlapping = !(
-          newLeft + btnWidth < safeRect.left ||
-          newLeft > safeRect.right ||
-          newTop + btnHeight < safeRect.top ||
-          newTop > safeRect.bottom
-        );
+        const distanceX = Math.abs(newLeft - safeRect.left);
+        const distanceY = Math.abs(newTop - safeRect.top);
+
+        valid = (distanceX > MIN_DISTANCE || distanceY > MIN_DISTANCE);
 
         attempts++;
       }
