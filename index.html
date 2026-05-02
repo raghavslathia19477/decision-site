@@ -16,7 +16,6 @@
       font-family: "Segoe UI", sans-serif;
       color: #fff;
       overflow: hidden;
-
       background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
     }
 
@@ -25,7 +24,6 @@
       text-align: center;
       padding: 30px 20px;
       max-width: 90%;
-
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       backdrop-filter: blur(10px);
@@ -56,6 +54,7 @@
       color: #fff;
       cursor: pointer;
       transition: all 0.25s ease;
+      position: relative;
     }
 
     button:hover {
@@ -80,12 +79,12 @@
     <p>sach bolna… juth ni</p>
 
     <!-- ESCAPING BUTTON -->
-    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
+    <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()" style="z-index:2;">
       Raghav ki galti thi 😔
     </button>
 
     <!-- NORMAL BUTTON -->
-    <button onclick="herFault()">
+    <button id="anshikaBtn" onclick="herFault()" style="z-index:1;">
       Anshika ki galti thi 😏
     </button>
 
@@ -105,18 +104,37 @@
 
     function moveButton() {
       const btn = document.getElementById("raghavBtn");
+      const safeBtn = document.getElementById("anshikaBtn");
       const container = document.querySelector(".container");
 
       const containerRect = container.getBoundingClientRect();
+      const safeRect = safeBtn.getBoundingClientRect();
 
       const btnWidth = btn.offsetWidth;
       const btnHeight = btn.offsetHeight;
 
-      const maxX = containerRect.width - btnWidth - 10;
-      const maxY = containerRect.height - btnHeight - 10;
+      let x, y, overlapping = true;
+      let attempts = 0;
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+      while (overlapping && attempts < 50) {
+        const maxX = containerRect.width - btnWidth - 10;
+        const maxY = containerRect.height - btnHeight - 10;
+
+        x = Math.random() * maxX;
+        y = Math.random() * maxY;
+
+        const newLeft = containerRect.left + x;
+        const newTop = containerRect.top + y;
+
+        overlapping = !(
+          newLeft + btnWidth < safeRect.left ||
+          newLeft > safeRect.right ||
+          newTop + btnHeight < safeRect.top ||
+          newTop > safeRect.bottom
+        );
+
+        attempts++;
+      }
 
       btn.style.position = "absolute";
       btn.style.left = x + "px";
