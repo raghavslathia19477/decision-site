@@ -8,20 +8,22 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: "Segoe UI", sans-serif;
       color: #fff;
-      overflow: hidden;
       background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
     }
 
     .container {
       position: relative;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* 🔥 spacing between elements */
+
       padding: 30px 20px;
       max-width: 90%;
       background: rgba(255, 255, 255, 0.05);
@@ -32,20 +34,17 @@
 
     h1 {
       font-size: 24px;
-      margin-bottom: 10px;
-      font-weight: 500;
+      margin: 0;
     }
 
     p {
       font-size: 15px;
       color: #d1d1d1;
-      margin-bottom: 30px;
+      margin: 0 0 10px 0;
     }
 
     button {
-      display: block;
       width: 230px;
-      margin: 12px auto;
       padding: 12px;
       font-size: 15px;
       border-radius: 12px;
@@ -64,10 +63,11 @@
     }
 
     #message {
-      margin-top: 25px;
+      margin-top: 10px;
       font-size: 15px;
       color: #e8e8e8;
       line-height: 1.6;
+      text-align: center;
     }
   </style>
 </head>
@@ -113,7 +113,7 @@
       const btnWidth = btn.offsetWidth;
       const btnHeight = btn.offsetHeight;
 
-      const MIN_DISTANCE = 120; // 🔥 gap between buttons
+      const MIN_DISTANCE = 140; // 🔥 ensures visible gap
 
       let x, y, valid = false;
       let attempts = 0;
