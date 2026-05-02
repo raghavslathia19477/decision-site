@@ -19,30 +19,29 @@
 
     .container {
       position: relative;
-      width: 90%;
-      max-width: 400px;
-      height: 75vh; /* 🔥 taller container */
-
-      padding: 20px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 40px rgba(255,255,255,0.08);
-
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      padding: 30px 20px;
+      width: 90%;
+      max-width: 400px;
+
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(255,255,255,0.08);
     }
 
     h1 {
       font-size: 22px;
-      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
       color: #ccc;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     button {
@@ -55,7 +54,7 @@
       color: #fff;
       cursor: pointer;
       transition: 0.25s;
-      position: absolute;
+      position: relative;
     }
 
     button:hover {
@@ -63,24 +62,22 @@
       border-color: #fff;
     }
 
-    /* 🔥 FIXED POSITIONS */
+    /* 🔥 NATURAL SPACING */
     #raghavBtn {
-      top: 35%;   /* middle area (moving zone) */
+      margin-bottom: 25px;
     }
 
     #anshikaBtn {
-      bottom: 20px; /* always bottom → far away */
+      margin-top: 10px;
     }
 
     #message {
-      position: absolute;
-      bottom: 80px;
+      margin-top: 20px;
       text-align: center;
       font-size: 14px;
-      color: #e8e8e8;
       line-height: 1.6;
+      color: #e8e8e8;
     }
-
   </style>
 </head>
 
@@ -91,12 +88,10 @@
   <h1>Chalo ek baar settle karte hain 🙂</h1>
   <p>sach bolna… juth ni</p>
 
-  <!-- MOVING BUTTON -->
   <button id="raghavBtn" ontouchstart="moveButton()" onmouseover="moveButton()">
     Raghav ki galti thi 😔
   </button>
 
-  <!-- FIXED BUTTON -->
   <button id="anshikaBtn" onclick="herFault()">
     Anshika ki galti thi 😏
   </button>
@@ -112,8 +107,7 @@ function herFault() {
     "Par sach bolu… Raghav kaafi dino se thoda bhara hua tha.<br>" +
     "Bas feel ho raha tha ki Anshika pehle jaisi baat nahi kar rahi…<br><br>" +
     "Isliye uss din sab nikal gaya.<br><br>" +
-    "Intent galat nahi tha… bas tareeka galat tha.<br><br>" +
-    "Ab decide tu kar… baat karni hai ya attitude rakhna hai 🙂";
+    "Intent galat nahi tha… bas tareeka galat tha.";
 }
 
 function moveButton() {
@@ -122,14 +116,13 @@ function moveButton() {
 
   const rect = container.getBoundingClientRect();
 
-  const maxX = rect.width - btn.offsetWidth - 10;
-
-  /* 🔥 ONLY MOVE IN UPPER AREA (keeps distance) */
-  const maxY = rect.height * 0.5;
+  const maxX = rect.width - btn.offsetWidth - 20;
+  const maxY = rect.height - btn.offsetHeight - 60;
 
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
 
+  btn.style.position = "absolute";
   btn.style.left = x + "px";
   btn.style.top = y + "px";
 }
