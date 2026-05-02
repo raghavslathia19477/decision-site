@@ -2,34 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Us vs Ego</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bas sach bolna</title>
+
   <style>
     body {
-      background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
-      color: #f5f5f5;
-      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding-top: 100px;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c, #121212);
+      color: #fff;
       overflow: hidden;
     }
 
+    .container {
+      padding: 20px;
+      max-width: 90%;
+    }
+
     h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
       font-weight: 500;
-      font-size: 32px;
     }
 
     p {
-      color: #bdbdbd;
+      font-size: 15px;
+      color: #cfcfcf;
       margin-bottom: 30px;
     }
 
     button {
-      margin: 15px;
-      padding: 12px 25px;
-      font-size: 16px;
-      border-radius: 8px;
-      background: transparent;
+      display: block;
+      width: 220px;
+      margin: 12px auto;
+      padding: 12px;
+      font-size: 15px;
+      border-radius: 10px;
       border: 1px solid #666;
+      background: rgba(255,255,255,0.05);
       color: #fff;
       cursor: pointer;
       transition: 0.3s;
@@ -41,37 +57,43 @@
     }
 
     #message {
-      margin-top: 40px;
-      font-size: 18px;
+      margin-top: 30px;
+      font-size: 16px;
       color: #e0e0e0;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
+      line-height: 1.5;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Okay… let’s settle this 😌</h1>
-  <p>But don’t overthink it… just go with your heart</p>
+  <div class="container">
+    <h1>Chalo ek baar settle karte hain 🙂</h1>
+    <p>sach bolna… juth ni</p>
 
-  <button onclick="myFault()">Meri galti thi 😔</button>
-  <button id="yourBtn" onmouseover="moveButton()">Nahi, teri galti thi 😏</button>
+    <button onclick="myFault()">Meri galti thi 😔</button>
+    <button id="yourBtn" ontouchstart="moveButton()" onmouseover="moveButton()">Nahi, teri galti thi 😏</button>
 
-  <div id="message"></div>
+    <div id="message"></div>
+  </div>
 
   <script>
     function myFault() {
       document.getElementById("message").innerHTML =
-        "Fine… I’ll take it 😌<br><br>" +
-        "But honestly… arguing with you still felt better than not talking to you at all.<br><br>" +
-        "So maybe… let’s not stay like this?";
+        "Theek hai… maan li 😌<br><br>" +
+        "Par sach bolu… ladna bhi acha lagta hai tere saath.<br><br>" +
+        "Chup rehna utna acha nahi lagta.";
     }
 
     function moveButton() {
       const btn = document.getElementById("yourBtn");
-      const x = Math.random() * (window.innerWidth - 150);
-      const y = Math.random() * (window.innerHeight - 100);
+
+      const maxX = window.innerWidth - btn.offsetWidth - 20;
+      const maxY = window.innerHeight - btn.offsetHeight - 20;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
       btn.style.position = "absolute";
       btn.style.left = x + "px";
       btn.style.top = y + "px";
