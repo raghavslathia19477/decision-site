@@ -17,21 +17,18 @@
       color: #fff;
       overflow: hidden;
 
-      /* 🔥 Premium romantic gradient */
       background: radial-gradient(circle at top, #1f1c2c, #0f0c29 60%, #000000);
     }
 
     .container {
+      position: relative;
       text-align: center;
       padding: 30px 20px;
       max-width: 90%;
 
-      /* glass effect */
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       backdrop-filter: blur(10px);
-
-      /* subtle glow */
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.08);
     }
 
@@ -58,13 +55,13 @@
       background: rgba(255,255,255,0.05);
       color: #fff;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     button:hover {
-      transform: scale(1.07);
+      transform: scale(1.05);
       border-color: #fff;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      box-shadow: 0 0 12px rgba(255,255,255,0.25);
     }
 
     #message {
@@ -108,9 +105,15 @@
 
     function moveButton() {
       const btn = document.getElementById("raghavBtn");
+      const container = document.querySelector(".container");
 
-      const maxX = window.innerWidth - btn.offsetWidth - 20;
-      const maxY = window.innerHeight - btn.offsetHeight - 20;
+      const containerRect = container.getBoundingClientRect();
+
+      const btnWidth = btn.offsetWidth;
+      const btnHeight = btn.offsetHeight;
+
+      const maxX = containerRect.width - btnWidth - 10;
+      const maxY = containerRect.height - btnHeight - 10;
 
       const x = Math.random() * maxX;
       const y = Math.random() * maxY;
